@@ -34,12 +34,15 @@ const validateEmail = (email) => {
 };
 
 const validatePassword = (password) => {
-  const regex = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])[0-9a-zA-Z!@#$%^&*]{8,}/;
+  const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-  if (passwordConfirm.value === "") {
+  if (password.value === "") {
     setError(password, "Password is required");
   } else if (!regex.test(password.value)) {
-    setError(password, "Email is incorrect");
+    setError(
+      password,
+      "Password must contain at least 8 symbols, one digit and one special character"
+    );
   } else {
     setValid(password);
   }
